@@ -1,0 +1,47 @@
+vector<long long> printFirstNegativeInteger(long long int A[],
+                                             long long int N, long long int K) {
+                                                 
+   vector<long long> v;
+    deque<long long> q; // Use a deque with long long as the data type
+
+    // Process for the first K elements
+    for (int i = 0; i < K; i++) {
+        if (A[i] < 0) {
+            q.push_back(i);
+        }
+    }
+
+    // Process for all remaining elements
+    for (int i = K; i < N; i++) {
+        // First, add the first negative integer in the current window to the result vector
+        if (!q.empty()) {
+            v.push_back(A[q.front()]);
+        } else {
+            v.push_back(0); // If no negative integer found, add 0 to the result
+        }
+
+        // Remove elements that are out of the current window
+        while (!q.empty() && (i-q.front() >=K)) {
+            q.pop_front();
+        }
+
+        // Add the current element's index to the deque if it's negative
+        if (A[i] < 0) {
+            q.push_back(i);
+        }
+    }
+
+    // Add the first negative integer in the last window
+    if (!q.empty()) {
+        v.push_back(A[q.front()]);
+    } else {
+        v.push_back(0); // If no negative integer found in the last window, add 0 to the result
+    }
+
+    return v;
+        
+        
+    
+
+                                                 
+ }
