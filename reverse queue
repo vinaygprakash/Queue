@@ -1,0 +1,39 @@
+void rev(queue<int> q)
+// Base case
+    if (q.empty()) {
+        return;
+    }
+
+    int temp = q.front();
+    q.pop();
+
+    // Recursively reverse the rest of the queue
+    rev(q); // yha return type void hai to bas rev(q) , and not q=rev(q); why?????????????????
+
+    q.push(temp);
+}
+*/
+    public:
+    queue<int> rev(queue<int> q)
+    {
+      
+        // Base case
+        if(q.empty()){
+            return q; // Yha queue hai so updaqte krna parega..
+        }
+        int temp=q.front();
+        q.pop();
+        
+        // Recusrsion
+       q= rev(q); // yha q=rev(q) kyu hua... as return type queue<int> hai to...why???????????????
+        
+        q.push(temp);
+        
+        return q;
+        
+        
+        
+    }
+*********************for test go to gfg question
+    
+};
