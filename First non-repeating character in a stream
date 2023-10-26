@@ -1,0 +1,41 @@
+class Solution {
+	public:
+		string FirstNonRepeating(string A){
+		    string str="";
+		    int fre[26]={0};
+		    queue<char> q;
+		    for(int i=0; i<A.size(); i++)
+	 {
+		        char ch=A[i];
+		        // Increse in array
+		        fre[ch-'a']++; // Yha pr fre[0] map to 'a' and fre[1] map to 'b' As if ch='a fre[97-97]=fre[0] and ch='b fre[98-97]=fre[1] so ye sav asie map ho rha hai
+
+		        
+		        // Push the element in array
+		        q.push(ch);
+		    
+		    while(!q.empty()){
+		        // Yh front element ka check kro...
+		        if(fre[q.front()-'a'] > 1){
+		            q.pop();
+		        }
+		        else{
+		            str.push_back(q.front());
+		            // agr aisa hua to break ho jao..as ans mil gya to break..
+		            break;
+		        }
+		    }
+		    
+		
+		    // Agr q empty hai to ...
+		    if(q.empty()){
+		        str.push_back('#');
+		    }
+	 } // for loop ke andar aayega n yar..
+		    return str;
+		    
+		    
+		    
+		}
+
+};
